@@ -4,7 +4,7 @@
 Overview
 
 • Built a full-stack Product Inventory Management System using Java 17, Spring Boot 3, and MySQL 8 with a clean MVC layered architecture.
-• Designed and use 11 RESTful API endpoints with pagination, sorting, search, category filtering, price-range filtering, and low-stock alerts.
+• Designed and used RESTful API endpoints with pagination, sorting, search, category filtering, price-range filtering, and low-stock alerts.
 • Implemented Spring Data JPA repositories with custom JPQL queries, Hibernate ORM auto DDL, and audit timestamps.
 • Applied Jakarta Bean Validation for request DTOs and a @RestControllerAdvice global exception handler returning structured JSON responses.
 • Developed an interactive dashboard UI (HTML/CSS/JS) with real-time search, CRUD modals, soft-delete/restore, and live inventory stats served as Spring static resources.
