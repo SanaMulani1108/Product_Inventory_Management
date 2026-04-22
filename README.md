@@ -1,8 +1,14 @@
-# 🚀 Spring Boot REST CRUD API — Products
-
-A production-ready REST API built with **Spring Boot 3**, **MySQL**, and **JPA/Hibernate**.
+# 🚀 Stockify - Product Inventory Management System
 
 ---
+Overview
+
+• Built a full-stack Product Inventory Management System using Java 17, Spring Boot 3, and MySQL 8 with a clean MVC layered architecture.
+• Designed and use 11 RESTful API endpoints with pagination, sorting, search, category filtering, price-range filtering, and low-stock alerts.
+• Implemented Spring Data JPA repositories with custom JPQL queries, Hibernate ORM auto DDL, and audit timestamps.
+• Applied Jakarta Bean Validation for request DTOs and a @RestControllerAdvice global exception handler returning structured JSON responses.
+• Developed an interactive dashboard UI (HTML/CSS/JS) with real-time search, CRUD modals, soft-delete/restore, and live inventory stats served as Spring static resources.
+• Wrote JUnit 5 unit tests using Mockito to cover service-layer business logic including duplicate validation and soft-delete behavior.
 
 ## 📦 Tech Stack
 
@@ -16,30 +22,6 @@ A production-ready REST API built with **Spring Boot 3**, **MySQL**, and **JPA/H
 | Boilerplate  | Lombok                      |
 | Testing      | JUnit 5 + Mockito           |
 
----
-
-## 📁 Project Structure
-
-```
-src/main/java/com/example/crudapi/
-├── CrudApiApplication.java       # Entry point
-├── controller/
-│   └── ProductController.java    # REST endpoints
-├── service/
-│   └── ProductService.java       # Business logic
-├── repository/
-│   └── ProductRepository.java    # DB queries
-├── model/
-│   └── Product.java              # JPA entity
-├── dto/
-│   ├── ProductRequest.java       # Input DTO
-│   ├── ProductResponse.java      # Output DTO
-│   └── ApiResponse.java          # Wrapper
-└── exception/
-    ├── ResourceNotFoundException.java
-    ├── DuplicateResourceException.java
-    └── GlobalExceptionHandler.java
-```
 
 ---
 
@@ -48,32 +30,9 @@ src/main/java/com/example/crudapi/
 ### 1. Prerequisites
 - Java 17+
 - Maven 3.8+
-- MySQL 8 running locally
-
-### 2. Configure Database
-Edit `src/main/resources/application.properties`:
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/cruddb?createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=your_password
-```
-
-### 3. Run the Application
-```bash
-./mvnw spring-boot:run
-```
-App starts on: `http://localhost:8080`
-
-### 4. Run Tests
-```bash
-./mvnw test
-```
+- MySQL 8 
 
 ---
-
-## 🌐 API Endpoints
-
-Base URL: `http://localhost:8080/api/v1/products`
 
 ### CRUD Operations
 
@@ -96,60 +55,6 @@ Base URL: `http://localhost:8080/api/v1/products`
 | `GET`  | `/low-stock?threshold=5`      | Get low-stock products    |
 | `GET`  | `/stats/categories`           | Product count by category |
 
-### Pagination & Sorting (on GET /)
-```
-?page=0&size=10&sortBy=price&direction=desc
-```
-
----
-
-## 📝 Request / Response Examples
-
-### Create Product
-```http
-POST /api/v1/products
-Content-Type: application/json
-
-{
-  "name": "Laptop Pro",
-  "description": "High performance laptop",
-  "price": 1299.99,
-  "stock": 50,
-  "category": "Electronics"
-}
-```
-
-### Success Response
-```json
-{
-  "success": true,
-  "message": "Product created successfully",
-  "data": {
-    "id": 1,
-    "name": "Laptop Pro",
-    "description": "High performance laptop",
-    "price": 1299.99,
-    "stock": 50,
-    "category": "Electronics",
-    "active": true,
-    "createdAt": "2024-01-15T10:30:00",
-    "updatedAt": "2024-01-15T10:30:00"
-  }
-}
-```
-
-### Validation Error Response
-```json
-{
-  "success": false,
-  "message": "Validation failed",
-  "data": {
-    "price": "Price must be greater than 0",
-    "name": "Product name is required"
-  }
-}
-```
-
 ---
 
 ## ✅ Features
@@ -164,12 +69,12 @@ Content-Type: application/json
 - ✔ Global exception handling
 - ✔ Consistent API response wrapper
 - ✔ Audit timestamps (createdAt, updatedAt)
-- ✔ Unit tests with Mockito
 
 ---
+<img width="1366" height="644" alt="image" src="https://github.com/user-attachments/assets/a93f4f3f-e516-423c-b622-a24e3f5b0f8f" />
+<img width="1366" height="639" alt="image" src="https://github.com/user-attachments/assets/d776f58c-806b-445b-86ec-e01de3337541" />
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/3cf427fc-baf4-46f4-ba98-a49ff748fab0" />
 
-## 📌 Notes
 
-- Deletion is **soft** — products are marked `active=false`, not physically removed
-- All timestamps are auto-managed by Hibernate
-- Database is auto-created if it doesn't exist (`createDatabaseIfNotExist=true`)
+
+
